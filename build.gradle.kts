@@ -17,6 +17,10 @@ dependencies {
     implementation ("org.slf4j:slf4j-simple:1.7.36")
 //    faker
     implementation ("com.github.javafaker:javafaker:1.0.2")
+
+    //    postgres sql
+    implementation ("org.postgresql:postgresql:42.7.3")
+
     testImplementation(kotlin("test"))
 }
 
