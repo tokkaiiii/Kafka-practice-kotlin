@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: root        # 데이터베이스 사용자
+      POSTGRES_PASSWORD: 1234  # 데이터베이스 비밀번호
+      POSTGRES_DB: postgre      # 초기 데이터베이스 이름
+    ports:
+      - "5432:5432"  # 호스트의 5432 포트를 컨테이너의 5432 포트에 연결
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # 데이터를 유지할 볼륨 설정
+    networks:
+      - postgres_network
+    restart: unless-stopped  # 컨테이너가 종료되면 자동으로 다시 시작하도록 설정
+
+volumes:
+  postgres_data:  # 데이터 저장을 위한 볼륨 정의
+
+networks:
+  postgres_network:
+    driver: bridge
